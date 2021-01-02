@@ -1,4 +1,20 @@
 <h1>Hello Angular Word</h1>
-<input type="text" [(ngModel)]="title">
+<button (click)="backgroungToggle =!backgroungToggle"> Toggle </button>
+<!--<div [ngStyle]="{
+width: '200px ',
+height: '200px',
+borderRadius: '5px',
+border: '1px solid #ccc',
+background: backgroungToggle ? 'red' : 'blue'
+}">
+</div>-->
 
-<p>{{title}}</p>
+<!--<p [ngClass]="{
+ red: backgroungToggle,
+ blue: !backgroungToggle
+}
+">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, rerum.</p>-->
+<p
+  [class.blue]="!backgroungToggle"
+  [class.red]="backgroungToggle"
+>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, ullam.</p>
