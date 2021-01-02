@@ -1,20 +1,9 @@
 <h1>Hello Angular Word</h1>
-<button (click)="backgroungToggle =!backgroungToggle"> Toggle </button>
-<!--<div [ngStyle]="{
-width: '200px ',
-height: '200px',
-borderRadius: '5px',
-border: '1px solid #ccc',
-background: backgroungToggle ? 'red' : 'blue'
-}">
-</div>-->
+<button (click)="toggle =!toggle"> Toggle </button>
+<p *ngIf="toggle; else blueP" class="red">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, illo!</p>
 
-<!--<p [ngClass]="{
- red: backgroungToggle,
- blue: !backgroungToggle
-}
-">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure, rerum.</p>-->
-<p
-  [class.blue]="!backgroungToggle"
-  [class.red]="backgroungToggle"
->Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, ullam.</p>
+<ng-template #blueP>
+  <p class="blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, ex.</p>
+</ng-template>
+
+
