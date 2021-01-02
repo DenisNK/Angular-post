@@ -1,20 +1,12 @@
-<h1>Hello Angular Word</h1>
-  <!--<ul>
-    <li *ngFor="let n of arr; let idx = index">
-      {{idx + 1}} <strong>{{n}}</strong>
-    </li>
-  </ul>
--->
-<ul style="list-style: none">
-  <li *ngFor="let post of objs">
-<p>{{post.title}} <b>{{post.author}}</b></p>
-    <ul>
-      <li *ngFor="let comment of post.comments">
-        <div>
-          <small>{{comment.name}}</small>
-          <p>{{comment.text}}</p>
-        </div>
-      </li>
-    </ul>
-  </li>
-</ul>
+
+<div class="container"></div>
+ <h1> Angular Components</h1>
+
+<app-post-form
+  (onAdd)="updatePosts($event)"
+></app-post-form>
+  <hr>
+<app-post
+  *ngFor="let p of posts"
+  [post]="p"
+></app-post>
