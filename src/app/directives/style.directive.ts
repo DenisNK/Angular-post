@@ -1,5 +1,5 @@
 import {Directive, ElementRef, HostBinding, HostListener, Input, Renderer2} from '@angular/core';
-import {createHostListener} from "@angular/compiler/src/core";
+import {createHostListener} from '@angular/compiler/src/core';
 
 @Directive({
   selector: '[appStyle]'
