@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 
-export default interface Post {
+export interface Post {
   title: string;
   text: string;
 }
@@ -17,6 +17,13 @@ export class AppComponent {
     { title: 'Bread', text: 'The best Bread in the world'},
     { title: 'Milk', text: 'The best Milk in world'}
   ];
+
+  addPost() {
+  this.post.unshift({
+    title: 'Angular 8',
+    text: 'Denis hello'
+  });
+  }
 }
 
 
