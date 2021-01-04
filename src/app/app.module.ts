@@ -3,14 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
-import {StyleDirective} from './directives/style.directive';
-import { IfNotDirective } from './directives/if-not.directive';
+import {MultByPipes} from './pipes/mult-by.pipes';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StyleDirective,
-    IfNotDirective
+    MultByPipes
   ],
   imports: [
     BrowserModule,
@@ -19,5 +17,6 @@ import { IfNotDirective } from './directives/if-not.directive';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
 
