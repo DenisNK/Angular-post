@@ -18,7 +18,7 @@ export class AppComponent {
     { title: 'Milk', text: 'The best Milk in world'}
   ];
 
-  addPost() {
+  addPost(): void {
   this.post.unshift({
     title: 'Angular 8',
     text: 'Denis hello'
