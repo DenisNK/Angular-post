@@ -1,11 +1,6 @@
 import {Component} from '@angular/core';
-import {interval, Subscription} from 'rxjs';
-import {map, filter} from 'rxjs/operators';
+import {Subscription, Observable} from 'rxjs';
 
-export interface Post {
-  title: string;
-  text: string;
-}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,15 +11,30 @@ export class AppComponent {
   sub: Subscription;
 
 constructor() {
-  const intervalStream$ = interval(500);
-  this.sub = intervalStream$
-    .pipe( filter((value => value % 2 === 0 )),
-      map((value) => `Mapped value ${value}`)
-    )
-    .subscribe((value) => {
-  console.log(value);
+  const stream$ = new Observable( obs => {
+    setTimeout ( () => {
+      obs.next(1);
+    }, 1500);
+
+    setTimeout( () => {
+      obs.complete();
+    }, 2100); // set timeuot for working or run error
+
+    setTimeout( () => {
+      obs.error('Something went wrong');
+    }, 2000);
+
+    setTimeout(() => {
+      obs.next(2);
+    }, 2500);
+
   });
 
+  this.sub = stream$.subscribe(
+    (value) => console.log('Next', value),
+    error => console.log('Error ', error),
+    () => console.log('Complete')
+    );
 }
   stop() {
     this.sub.unsubscribe();
