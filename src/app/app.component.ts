@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {Observable} from 'rxjs';
+import {interval, Subscription} from 'rxjs';
+import {map, filter} from 'rxjs/operators';
 
 export interface Post {
   title: string;
@@ -12,18 +13,22 @@ export interface Post {
 })
 export class AppComponent {
 
-  p: Promise<string> = new Promise<string>(resolve => {
-    setTimeout ( () => {
-      resolve('Promise resolved');
-    }, 2000);
+  sub: Subscription;
+
+constructor() {
+  const intervalStream$ = interval(500);
+  this.sub = intervalStream$
+    .pipe( filter((value => value % 2 === 0 )),
+      map((value) => `Mapped value ${value}`)
+    )
+    .subscribe((value) => {
+  console.log(value);
   });
 
-  date: Observable<Date> = new Observable( obs => {
-     setInterval( () => {
-       obs.next(new Date());
-     }, 1000);
-  });
-
+}
+  stop() {
+    this.sub.unsubscribe();
+  }
 }
 
 
