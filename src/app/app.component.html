@@ -1,8 +1,25 @@
 <div class="container">
-  <h1>Angular Pipes</h1>
-  <button class="btn" (click)="stop()" >Stop interval</button>
+  <h1>Angular Services</h1>
 
-  <button class="btn btn-danger" (click)="next()">Next value</button>
+  <div class="card">
+    <h2> App Counter {{ appCounterService.counter}}</h2>
+  </div>
 
+  <button class="btn" (click)="appCounterService.increase()">+</button>
+  <button class="btn" (click)="appCounterService.decrease()">-</button>
+
+  <div class="card">
+    <h2> Local Counter {{ localCounterService.counter}}</h2>
+  </div>
+
+  <button class="btn" (click)="localCounterService.increase()">+</button>
+  <button class="btn" (click)="localCounterService.decrease()">-</button>
+
+  <hr>
+  <p>counter begin</p>
+  <app-counter></app-counter>
+  <p>counter end</p>
+
+<!--  <app-my-service></app-my-service>-->
 </div>
 

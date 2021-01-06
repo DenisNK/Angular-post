@@ -1,31 +1,21 @@
 import {Component} from '@angular/core';
-import {Subscription, Subject} from 'rxjs';
+import {AppCounterService} from './services/app-counter.service';
+import {LocalCounterService} from './services/local-counter.service';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [LocalCounterService]
 })
 export class AppComponent {
 
-  sub: Subscription;
-  stream$: Subject<number> = new Subject<number>();
-  counter = 0;
-constructor() {
-this.sub = this.stream$.subscribe( value => {
-  console.log('Subscribe=', value);
-  });
-}
-
-  stop() {
-    this.sub.unsubscribe();
+  constructor(private appCounterService: AppCounterService, private localCounterService: LocalCounterService) {
   }
 
-  next() {
-    this.counter ++;
-    this.stream$.next(this.counter);
-    console.log(this.counter);
 }
-}
+
+
 
 
