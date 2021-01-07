@@ -8,6 +8,8 @@
         <input type="text" placeholder="Email" formControlName="email">
       </label>
 
+      <pre> {{ form.get('email').errors | json }}</pre>
+
       <div
         *ngIf="form.get('email').invalid && form.get('email').touched"
         class="validation"
@@ -26,7 +28,7 @@
       <label>Пароль</label>
       <input type="password" placeholder="Пароль" formControlName="password">
 
-<!--      <pre> {{ form.get('password').errors | json }}</pre>-->
+      <pre> {{ form.get('password').errors | json }}</pre>
 
       <div
         *ngIf="form.get('password').invalid && form.get('password').touched"
@@ -44,13 +46,13 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" formGroupName="address">
       <h2>Адрес</h2>
 
       <div class="form-control">
         <label>Страна</label>
 
-        <select>
+        <select formControlName="country">
           <option value="ru">Россия</option>
           <option value="ua">Украина</option>
           <option value="by">Беларусь</option>
@@ -58,10 +60,10 @@
       </div>
 
       <div class="form-control">
-        <input type="text">
+        <input type="text" placeholder="Nova Kakhovka" formControlName="city">
       </div>
 
-      <button class="btn" type="button">Выбрать столицу</button>
+      <button class="btn" type="button" (click)="SetCapital()">Выбрать столицу</button>
     </div>
 
     <div class="card">

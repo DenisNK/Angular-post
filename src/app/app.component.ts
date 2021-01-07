@@ -12,14 +12,19 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      email: new FormControl('', [
+
+        email: new FormControl('', [
           Validators.email,
           Validators.required
       ]),
-      password: new FormControl(null, [
-        Validators.required,
-        Validators.minLength(12)
-      ])
+        password: new FormControl(null, [
+          Validators.required,
+          Validators.minLength(5)
+      ]),
+        address: new FormGroup({
+          country: new FormControl('ua'),
+          city: new FormControl('', [Validators.required])
+      })
     });
   }
 
@@ -29,5 +34,17 @@ export class AppComponent implements OnInit{
   const formData = {...this.form.value};
   console.log(formData);
     }
+  }
+
+  SetCapital() {
+    const cityMap = {
+      ru: 'Moscow',
+      ua: 'Kyiev',
+      by: 'Minsk'
+    };
+    const cityKey = this.form.get('address').get('country').value;
+    const city = cityMap[cityKey];
+    this.form.patchValue({address: {city}
+    });
   }
 }
