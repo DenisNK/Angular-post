@@ -18,6 +18,10 @@
           The fiedl e-mail can't be empty
         </small>
 
+        <small *ngIf="form.get('email').errors.restrictedEmail">
+         Email {{form.get('email').value}} Forbidden!
+        </small>
+
         <small *ngIf="form.get('email').errors.email">
           Input the correct e-mail
         </small>
@@ -71,8 +75,7 @@
       <button class="btn" type="button" (click)="addSkill()">Добавить умение</button>
 
       <div class="form-control"
-      *ngFor="let c of form.get('skills').controls; let idx = index"
-      >
+      *ngFor="let c of form.get('skills').controls; let idx = index" >
         <label> Skills {{idx + 1}}</label>
         <input type="text" [formControlName]="idx">
       </div>
