@@ -18,7 +18,7 @@ export class AppComponent implements OnInit{
           Validators.email,
           Validators.required,
           MyValidators.restrictedEmails
-      ]),
+        ], MyValidators.uniqEmail),
         password: new FormControl(12345678, [
           Validators.required,
           Validators.minLength(5)
@@ -36,6 +36,7 @@ export class AppComponent implements OnInit{
   console.log('Form=', this.form);
   const formData = {...this.form.value};
   console.log(formData);
+  this.form.reset();
     }
   }
 
