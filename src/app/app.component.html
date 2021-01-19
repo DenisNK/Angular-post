@@ -1,9 +1,22 @@
-<div class="container">
-  <h1> Angular NgModels</h1>
+<nav class="navbar">
+  <h1>
+    <a [routerLink]="['/']">Angular Routing</a>
+  </h1>
+  <ul>
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <a [routerLink]="['/']">Home</a>
+    </li>
+<!--    <li><a href="/posts">Posts</a></li>-->
+    <li routerLinkActive="active"><a routerLink="/posts">Posts</a></li>
+    <li routerLinkActive="active"><a [routerLink]="['./about']">About</a></li>
 
-  <app-swich
-    [(ngModel)]="appState"
-    (ngModelChange)="handleChange()"
-  ></app-swich> <!-- ngModelChange - Отслеживаем когда модель изменилась-->
-  <p>{{appState}}</p>
-</div>
+    <li><button class="btn">Login</button></li>
+    <li><button class="btn">Logout</button></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <div class="card">
+<router-outlet></router-outlet>
+  </div>
+  </div>
