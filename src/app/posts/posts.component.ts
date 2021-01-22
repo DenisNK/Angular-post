@@ -11,7 +11,7 @@ export class PostsComponent implements OnInit{
 
   showIds = false;
 
-  constructor(public postsService: PostsService,
+  constructor(private postsService: PostsService,
               private route: ActivatedRoute,
               private router: Router) {}
 
