@@ -16,4 +16,22 @@ describe('CounterComponent', () => {
     component.decrement();
     expect(component.counter).toBe(-1);
   });
+
+ it('should inc val by emitter', () => {
+    let result = null;
+    component.counterEmitter.subscribe(v => result = v);
+
+    component.increment();
+
+    expect(result).toBe(1);
+  });
+
+ it('should inc val by emitter', () => {
+    let result = null;
+    component.counterEmitter.subscribe(v => result = v);
+
+    component.decrement();
+
+    expect(result).toBe(-1);
+  });
 });
