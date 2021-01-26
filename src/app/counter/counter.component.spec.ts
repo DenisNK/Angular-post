@@ -33,4 +33,23 @@ describe('CounterComponent', () => {
 
     expect(el.textContent).toContain(num.toString());
   });
+
+  it('should add green class if counter is even', () => {
+    component.counter = 6;
+
+    fixture.detectChanges();
+
+    const de = fixture.debugElement.query(By.css('.counter'));
+    const el: HTMLElement = de.nativeElement;
+
+    expect(el.classList.contains('green')).toBeTruthy();
+  });
+
+  it('should inc counter if inc button was clicked', () => {
+  const btn = fixture.debugElement.query(By.css('#increment'));
+  btn.triggerEventHandler('click', null);
+  // component.increment() - Отличие от юнит тестов (в юн.тест. мы бы просто вызвали этот метод) (Тут мы сами тригерим)
+
+  expect(component.counter).toBe(1);
+  });
 });
