@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Angular-basics": {
+    "angular-blog": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,12 +17,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Angular-basics",
+            "outputPath": "dist/angular-blog",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
+            "aot": false,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -43,7 +43,9 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
+              "extractCss": true,
               "namedChunks": false,
+              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -52,11 +54,6 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
                 }
               ]
             }
@@ -65,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Angular-basics:build"
+            "browserTarget": "angular-blog:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Angular-basics:build:production"
+              "browserTarget": "angular-blog:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Angular-basics:build"
+            "browserTarget": "angular-blog:build"
           }
         },
         "test": {
@@ -113,16 +110,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Angular-basics:serve"
+            "devServerTarget": "angular-blog:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Angular-basics:serve:production"
+              "devServerTarget": "angular-blog:serve:production"
             }
           }
         }
       }
-    }
-  },
-  "defaultProject": "Angular-basics"
+    }},
+  "defaultProject": "angular-blog"
 }
