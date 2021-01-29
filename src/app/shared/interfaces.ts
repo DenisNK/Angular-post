@@ -9,3 +9,11 @@ export interface FbAuthResponse {
     expiresIn: string;
 }
 
+export interface Post {
+    Id?: string;
+    title: string;
+    text: string;
+    author: string;
+    date: Date;
+}
+
