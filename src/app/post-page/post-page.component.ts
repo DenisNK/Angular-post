@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Post} from '../shared/interfaces';
+import {PostService} from '../shared/post.service';
+import {ActivatedRoute, Params} from '@angular/router';
+import {Observable} from 'rxjs';
+import {switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-post-page',
@@ -7,9 +12,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostPageComponent implements OnInit {
 
-  constructor() { }
+  post$: Observable<Post>;
+
+  constructor(
+      private postService: PostService,
+      private route: ActivatedRoute
+
+  ) { }
 
   ngOnInit() {
+    this.post$ = this.route.params
+        .pipe(switchMap((params: Params) => {    /* switchMap - Позволяет изменить нам направление от param-сов до нужного на стрима */
+        return this.postService.getById(params['id']);  /* or "params.id" */
+        }));
   }
-
 }
