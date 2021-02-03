@@ -1,6 +1,6 @@
 # AngularBlog
+var collideSingle = require('collide-2d-aabb-aabb').single
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
 
 ## Development server
 
@@ -25,3 +25,18 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+# Screen 
+This app allows you to have your blog, create, edit and delete posts.
+### Login
+Login: 310deniska@gmail.com  
+Password: 123456
+
+#### Page Login
+![LoginPage](https://github.com/DenisNK/Angular-post/blob/Animations/Login.PNG)
+
+#### Page edit posts
+![Edit posts](https://github.com/DenisNK/Angular-post/blob/Animations/Edit.PNG)
+
+#### Posts page
+![PostsPage](https://github.com/DenisNK/Angular-post/blob/Animations/PostPages.PNG)
