@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {PostService} from '../shared/post.service';
+import {PostsService} from '../shared/posts.service';
 import {Observable} from 'rxjs';
 import {Post} from '../shared/interfaces';
 
@@ -12,7 +12,7 @@ export class HomePageComponent implements OnInit {
 
   posts$: Observable<Post[]>;
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostsService) { }
 
   ngOnInit() {
   this.posts$ = this.postService.getAll();
